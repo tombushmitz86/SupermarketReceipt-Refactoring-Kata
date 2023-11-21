@@ -6,7 +6,7 @@ from teller import Teller
 from tests.fake_catalog import FakeCatalog
 
 
-def test_ten_percent_discount():
+def test_end_to_end():
     catalog = FakeCatalog()
     toothbrush = Product("toothbrush", ProductUnit.EACH)
     catalog.add_product(toothbrush, 0.99)
