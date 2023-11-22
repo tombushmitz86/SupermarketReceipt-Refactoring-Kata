@@ -20,6 +20,9 @@ and extending Teller.add_special_offer to have multiple offers with priorities (
    - no item reset (we added apples but removed 5 of them and what to re-add them)
    - no cart reset
 
-* ReciptPrinter
+* ReceiptPrinter
     - add interfaces with different types of prints and formats (email, html templates, raw text etc..)
 
+* lack of type hinting across the project
+
+* Receipt.total_price does not round to zero if the discounts are larger than the sale price (can be negative)
