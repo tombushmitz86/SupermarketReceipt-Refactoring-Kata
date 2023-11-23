@@ -65,7 +65,7 @@ def test_three_for_two_offer(cart, teller, toothbrush_product):
 
 def test_ten_percent_offer(cart, teller, toothbrush_product):
     cart.add_item_quantity(toothbrush_product, 2)
-    teller.add_special_offer(SpecialOfferType.TEN_PERCENT_DISCOUNT, toothbrush_product, 10.0)
+    teller.add_special_offer(SpecialOfferType.X_PERCENT_DISCOUNT, toothbrush_product, 10.0)
     receipt = teller.checks_out_articles_from(cart)
     assert len(receipt.discounts) == 1
     offer_discount = receipt.discounts[0]
@@ -79,7 +79,7 @@ def test_ten_percent_offer(cart, teller, toothbrush_product):
 def test_two_for_amount_offer(cart, teller, toothbrush_product):
     cart.add_item_quantity(toothbrush_product, 6)
     # Normal cost is 6 * 2.0  = 12
-    teller.add_special_offer(SpecialOfferType.TWO_FOR_AMOUNT, toothbrush_product, 1.5)
+    teller.add_special_offer(SpecialOfferType.X_FOR_AMOUNT, toothbrush_product, 1.5, 2)
     receipt = teller.checks_out_articles_from(cart)
     assert len(receipt.discounts) == 1
     offer_discount = receipt.discounts[0]
@@ -93,7 +93,7 @@ def test_two_for_amount_offer(cart, teller, toothbrush_product):
 def test_five_for_amount_offer(cart, teller, toothbrush_product):
     cart.add_item_quantity(toothbrush_product, 6)
     # Normal cost is 6 * 2.0  = 12
-    teller.add_special_offer(SpecialOfferType.FIVE_FOR_AMOUNT, toothbrush_product, 8.0)
+    teller.add_special_offer(SpecialOfferType.X_FOR_AMOUNT, toothbrush_product, 8.0, 5)
     receipt = teller.checks_out_articles_from(cart)
     assert len(receipt.discounts) == 1
     offer_discount = receipt.discounts[0]
@@ -107,7 +107,7 @@ def test_five_for_amount_offer(cart, teller, toothbrush_product):
 def test_no_double_offers_so_only_latest_offer_counts(cart, teller, toothbrush_product):
     cart.add_item_quantity(toothbrush_product, 3)
     teller.add_special_offer(SpecialOfferType.THREE_FOR_TWO, toothbrush_product, 1.5)
-    teller.add_special_offer(SpecialOfferType.TEN_PERCENT_DISCOUNT, toothbrush_product, 10.0)
+    teller.add_special_offer(SpecialOfferType.X_PERCENT_DISCOUNT, toothbrush_product, 10.0)
     
     receipt = teller.checks_out_articles_from(cart)
     assert len(receipt.discounts) == 1

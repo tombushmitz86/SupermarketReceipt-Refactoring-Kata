@@ -26,3 +26,7 @@ and extending Teller.add_special_offer to have multiple offers with priorities (
 * lack of type hinting across the project
 
 * Receipt.total_price does not round to zero if the discounts are larger than the sale price (can be negative)
+* In general the discount mechanism is somewhere cumbersome and hard to understand, I might put in implementation where
+instead of discount I would just calculate the amount due to pay and subtract that from the normal price, e.g
+we have 2 tvs for 1000, instead of calculating the discount by buying 3 tvs I would calculate the 1000 on two tvs + normal price of a single
+item and then subtract the regular of 3 tvs from the (2 tvs for 1000)
