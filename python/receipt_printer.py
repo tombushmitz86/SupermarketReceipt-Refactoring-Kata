@@ -1,6 +1,10 @@
 from model_objects import ProductUnit
 
-class ReceiptPrinter:
+class ReceiptPrinterAbstract:
+    def print_receipt(self, receipt):
+        raise NotImplementedError("Print method must be implemented")
+
+class ReceiptPrinterStandard(ReceiptPrinterAbstract):
 
     def __init__(self, columns=40):
         self.columns = columns
